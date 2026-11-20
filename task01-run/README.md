@@ -1,3 +1,32 @@
+# Запуск стенда JFrog Artifactory
+
+## Подготовка
+
+Команда `docker version` показала версии клиента и сервера. Стенд запущен из корня репозитория с помощью Docker Compose.
+
+## Запуск Artifactory и PostgreSQL
+
+Для запуска использована локальная копия `docker-compose.yml`. В ней порты опубликованы на `127.0.0.1`, а для подключения к PostgreSQL задан отдельный пароль.
+
+```text
+$ docker compose --project-directory . -f "$LAB_COMPOSE" up -d --quiet-pull
+```
+
+Compose сначала дождался готовности PostgreSQL. Artifactory подключается к нему по адресу `jdbc:postgresql://postgres:5432/artifactory` из `JF_SHARED_DATABASE_URL`.
+
+## Проверка контейнеров
+
+```text
+$ docker compose ps --format 'table {{.Name}}\t{{.Service}}\t{{.Status}}'
+NAME                   SERVICE       STATUS
+artifactory            artifactory   Up About a minute (healthy)
+artifactory-postgres   postgres      Up 2 minutes (healthy)
+```
+
+Оба контейнера находятся в статусе `Up`. Для API назначен адрес `127.0.0.1:8081`, для веб-интерфейса — `127.0.0.1:8082`.
+
+<div><hr></div>
+
 # Задание 1. Запуск стенда
 
 **Что делаем:** поднимаем Artifactory из готового compose-файла.

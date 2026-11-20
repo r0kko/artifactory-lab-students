@@ -1,0 +1,71 @@
+Задание 1. Запуск стенда JFrog Artifactory
+
+LAB_COMPOSE — локальная копия docker-compose.yml с привязкой портов к 127.0.0.1 и отдельным паролем базы данных.
+
+$ docker version
+Client:
+ Version:           29.9.3
+ API version:       1.56
+ Go version:        go1.26.10
+ Git commit:        5457199
+ Built:             Tue Nov  3 21:41:57 2026
+ OS/Arch:           darwin/arm64
+ Context:           desktop-linux
+
+Server: Docker Desktop 4.100.1 (247138)
+ Engine:
+  Version:          29.9.3
+  API version:      1.56 (minimum version 1.40)
+  Go version:       go1.26.10
+  Git commit:       70efc0e
+  Built:            Tue Nov  3 21:41:25 2026
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          v2.4.2
+  GitCommit:        b7a25261e029d68978bbf290df0a62fc819b3c51
+ runc:
+  Version:          1.5.3
+  GitCommit:        v1.5.3-0-g46365c62
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+$ ls docker-compose.yml
+docker-compose.yml
+
+$ docker compose --project-directory . -f "$LAB_COMPOSE" up -d --quiet-pull
+Image releases-docker.jfrog.io/jfrog/artifactory-oss:latest Pulling
+ Image releases-docker.jfrog.io/jfrog/artifactory-oss:latest Pulled
+ Network artifactory-lab-students_default Creating
+ Volume artifactory-lab-students_artifactory_data Creating
+ Volume artifactory-lab-students_postgres_data Creating
+ Volume artifactory-lab-students_postgres_data Created
+ Volume artifactory-lab-students_artifactory_data Created
+ Network artifactory-lab-students_default Created
+ Container artifactory-postgres Creating
+ Container artifactory-postgres Created
+ Container artifactory Creating
+ Container artifactory Created
+ Container artifactory-postgres Starting
+ Container artifactory-postgres Started
+ Container artifactory-postgres Waiting
+ Container artifactory-postgres Healthy
+ Container artifactory Starting
+ Container artifactory Started
+
+$ docker compose ps
+NAME                   IMAGE                                                   COMMAND                  SERVICE       CREATED         STATUS                        PORTS
+artifactory            releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/usr/local/bin/fips…"   artifactory   2 minutes ago   Up About a minute (healthy)   127.0.0.1:8081-8082->8081-8082/tcp
+artifactory-postgres   postgres:16-alpine                                      "docker-entrypoint.s…"   postgres      2 minutes ago   Up 2 minutes (healthy)        5432/tcp
+
+$ docker compose ps --format 'table {{.Name}}\t{{.Service}}\t{{.Status}}'
+NAME                   SERVICE       STATUS
+artifactory            artifactory   Up About a minute (healthy)
+artifactory-postgres   postgres      Up 2 minutes (healthy)
+
+$ docker compose port artifactory 8081
+127.0.0.1:8081
+
+$ docker compose port artifactory 8082
+127.0.0.1:8082
