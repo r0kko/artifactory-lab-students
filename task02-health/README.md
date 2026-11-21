@@ -1,3 +1,36 @@
+# Проверка готовности JFrog Artifactory
+
+## Health endpoint
+
+Запрос к `/router/api/v1/system/health` на локальном стенде вернул `HTTP 200`. В JSON роутер сообщил `HEALTHY`, все 9 обязательных сервисов также вернули `HEALTHY`.
+
+```text
+$ curl --noproxy '*' -fsS --connect-timeout 3 --max-time 10 \
+    -w '\nHTTP %{http_code}\n' http://127.0.0.1:8082/router/api/v1/system/health
+HTTP 200
+
+Поля state и message объекта router
+{
+  "state": "HEALTHY",
+  "message": "OK"
+}
+```
+
+Полный ответ health endpoint записан в `results.txt`.
+
+## Веб-интерфейс
+
+Отдельный запрос к `/ui/` вернул `HTTP 200` и тип содержимого `text/html`.
+
+```text
+$ curl --noproxy '*' -fsS --connect-timeout 3 --max-time 10 -o /dev/null \
+    -w 'HTTP %{http_code}\nContent-Type: %{content_type}\n' http://127.0.0.1:8082/ui/
+HTTP 200
+Content-Type: text/html; charset=utf-8
+```
+
+<div><hr></div>
+
 # Задание 2. Ожидание готовности
 
 **Что делаем:** ждём, пока Artifactory полностью запустится, и проверяем

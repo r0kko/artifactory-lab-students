@@ -1,0 +1,82 @@
+Задание 2. Проверка готовности JFrog Artifactory
+
+$ curl --noproxy '*' -fsS --connect-timeout 3 --max-time 10 -w '\nHTTP %{http_code}\n' http://127.0.0.1:8082/router/api/v1/system/health
+{
+	"router": {
+		"node_id": "ea542250f6d4",
+		"state": "HEALTHY",
+		"message": "OK",
+		"required_service_types": [
+			"jfrt",
+			"jfac",
+			"jfmd",
+			"jffe",
+			"jfob",
+			"jfcfg",
+			"jfevt",
+			"jftpl",
+			"jfbus"
+		]
+	},
+	"services": [
+		{
+			"service_id": "jfac@01m8cbcgjdjfc81hw77vw007bv",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfbus@01m8cbcdgj6smt1nrav6010t2p",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfcfg@01m8cbcgjdjfc81hw77vw007bv",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfevt@01m8cbcgjdjfc81hw77vw007bv",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jffe@01m8cbcgjdjfc81hw77vw007bv",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfmd@01m8cbcg3e41dymscabg6a8weg",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfob@01m8cbcdgj6smt1nrav6010t2p",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jfrt@01m8cbcjr1g7mb0dkar5gg0vcm",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		},
+		{
+			"service_id": "jftpl@0000",
+			"node_id": "ea542250f6d4",
+			"state": "HEALTHY",
+			"message": "OK"
+		}
+	]
+}
+HTTP 200
+
+$ curl --noproxy '*' -fsS --connect-timeout 3 --max-time 10 -o /dev/null -w 'HTTP %{http_code}\nContent-Type: %{content_type}\n' http://127.0.0.1:8082/ui/
+HTTP 200
+Content-Type: text/html; charset=utf-8
