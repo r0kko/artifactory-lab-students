@@ -1,0 +1,17 @@
+Задание 3. Вход в интерфейс и смена пароля
+
+На локальном стенде выполнены следующие действия в Chromium.
+
+1. Открыл /ui/login и вошёл под admin. Artifactory открыл мастер Onboarding.
+2. Нажал Get Started, задал новый пароль на шаге Reset Admin Password и нажал Next.
+3. Пропустил Set Base URL, Configure Default Proxy и Create Repositories кнопкой Skip.
+4. На экране Summary мастер подтвердил, что первичная настройка завершена.
+5. Нажал Finish, затем выбрал User Menu → Logout. Открылась страница Login - JFrog.
+6. Вошёл под admin с новым паролем и пропустил предложение создать репозиторий.
+
+Результат повторного входа
+URL: http://127.0.0.1:8082/ui/packages
+Заголовок страницы: Packages - JFrog
+Пользователь в меню: admin
+В верхней панели: Platform и Administration
+Скриншот главного экрана: artifactory-main.png
