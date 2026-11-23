@@ -1,0 +1,15 @@
+Задание 4. Создание репозитория в интерфейсе
+
+1. Вошёл в локальный Artifactory и открыл Administration → Repositories.
+2. Нажал Create a Repository и выбрал Local.
+3. Выбрал тип пакетов Generic и ввёл myapp-local в поле Repository Key.
+4. Нажал Create Local Repository. Появилось сообщение «myapp-local was created successfully».
+5. Обновил страницу и снова проверил список. Репозиторий сохранился.
+6. В All Repositories применил фильтр Package Type → Generic. В списке видна строка myapp-local с типом Local.
+
+Список репозиториев
+URL: http://127.0.0.1:8082/ui/admin/repositories/
+Repository Key: myapp-local
+Repository Type: Local
+Package Type: Generic
+Скриншот списка: myapp-local.png

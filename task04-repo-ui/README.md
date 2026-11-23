@@ -1,3 +1,19 @@
+# Создание репозитория myapp-local
+
+## Создание через веб-интерфейс
+
+Открыл `Administration → Repositories` и выбрал `Create a Repository → Local`. Указал тип пакетов `Generic`, ввёл `myapp-local` в поле `Repository Key` и нажал `Create Local Repository`.
+
+Artifactory подтвердил создание сообщением `myapp-local was created successfully`.
+
+## Проверка в списке
+
+После обновления страницы репозиторий сохранился в списке. На скриншоте `myapp-local` отображается как `Local` при выбранном фильтре типа пакетов `Generic`.
+
+![myapp-local в списке репозиториев с выбранным фильтром Generic](myapp-local.png)
+
+<div><hr></div>
+
 # Задание 4. Создание репозитория в интерфейсе
 
 **Что делаем:** создаём свой репозиторий `myapp-local` — «полку», куда
