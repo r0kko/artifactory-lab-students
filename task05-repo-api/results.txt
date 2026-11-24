@@ -1,0 +1,19 @@
+Задание 5. Список репозиториев через API
+
+Настройки Basic Auth для администратора переданы curl через стандартный ввод.
+
+$ curl --config - --basic --noproxy '*' -fsS --connect-timeout 3 --max-time 10 -w '\nHTTP %{http_code}\n' http://127.0.0.1:8081/artifactory/api/repositories
+[ {
+  "key" : "example-repo-local",
+  "description" : "Example artifactory repository",
+  "type" : "LOCAL",
+  "url" : "http://127.0.0.1:8081/artifactory/example-repo-local",
+  "packageType" : "Generic"
+}, {
+  "key" : "myapp-local",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "http://127.0.0.1:8081/artifactory/myapp-local",
+  "packageType" : "Generic"
+} ]
+HTTP 200
