@@ -1,0 +1,26 @@
+Задание 6. Сборка приложения и архива
+
+Команды выполнены в task06-build-app.
+
+$ mkdir myapp
+$ printf "%s\n" "print('hello from myapp')" > myapp/main.py
+$ printf '%s\n' '1.0.0' > myapp/VERSION
+
+$ COPYFILE_DISABLE=1 tar -czf myapp-1.0.0.tar.gz -C myapp .
+
+$ stat -f '%N %z bytes' myapp-1.0.0.tar.gz
+myapp-1.0.0.tar.gz 358 bytes
+
+$ tar -tzf myapp-1.0.0.tar.gz
+./
+./VERSION
+./main.py
+
+$ tar -xOzf myapp-1.0.0.tar.gz ./main.py
+print('hello from myapp')
+
+$ tar -xOzf myapp-1.0.0.tar.gz ./VERSION
+1.0.0
+
+$ python3 myapp/main.py
+hello from myapp
