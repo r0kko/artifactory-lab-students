@@ -1,3 +1,38 @@
+# Публикация артефакта myapp 1.0.0
+
+## Подготовка и загрузка
+
+Скопировал `myapp-1.0.0.tar.gz` из задания 6. Перед запуском задал `ARTIFACTORY_PASSWORD` в окружении. `upload.sh` передал пароль в `curl` через стандартный ввод и загрузил архив в репозиторий `myapp-local`.
+
+## Ответ Artifactory
+
+```text
+$ ./upload.sh
+{
+  "repo" : "myapp-local",
+  "path" : "/myapp/1.0.0/myapp-1.0.0.tar.gz",
+  "created" : "2026-11-27T10:26:41.777Z",
+  "createdBy" : "admin",
+  "downloadUri" : "http://127.0.0.1:8081/artifactory/myapp-local/myapp/1.0.0/myapp-1.0.0.tar.gz",
+  "mimeType" : "application/x-gzip",
+  "size" : "358",
+  "checksums" : {
+    "sha1" : "10e5c0f43a73ad6a099aed6dec03a52dd83a2dce",
+    "md5" : "9d4fde62485a3796eba743713f9d890c",
+    "sha256" : "3705f873cdb68c6cd6ab894c9f57e87d2907b49201dd81e84ebb391d27f9a486"
+  },
+  "originalChecksums" : {
+    "sha256" : "3705f873cdb68c6cd6ab894c9f57e87d2907b49201dd81e84ebb391d27f9a486"
+  },
+  "uri" : "http://127.0.0.1:8081/artifactory/myapp-local/myapp/1.0.0/myapp-1.0.0.tar.gz"
+}
+HTTP 201
+```
+
+Artifactory подтвердил загрузку кодом `HTTP 201`. Размер на сервере составил 358 байт, а значение `checksums.sha256` совпало с SHA-256 локального архива.
+
+<div><hr></div>
+
 # Задание 7. Публикация артефакта
 
 **Что делаем:** загружаем архив в Artifactory готовым скриптом — нужно
