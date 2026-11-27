@@ -1,0 +1,18 @@
+Задание 8. Артефакт в интерфейсе Artifactory
+
+Открыл Platform → Artifactory → Artifacts. В дереве раскрыл myapp-local → myapp → 1.0.0 и выбрал myapp-1.0.0.tar.gz.
+
+Карточка файла, вкладка General
+Repository Path: myapp-local/myapp/1.0.0/myapp-1.0.0.tar.gz
+Deployed By: admin
+Size: 358 bytes
+Created: 27-11-26 13:26:41 +0300
+
+Checksums
+SHA-256: 3705f873cdb68c6cd6ab894c9f57e87d2907b49201dd81e84ebb391d27f9a486
+SHA-1: 10e5c0f43a73ad6a099aed6dec03a52dd83a2dce
+MD5: 9d4fde62485a3796eba743713f9d890c
+
+SHA-256 из ответа API в задании 7: 3705f873cdb68c6cd6ab894c9f57e87d2907b49201dd81e84ebb391d27f9a486
+SHA-256 в UI совпадает с ответом API. В карточке показано «Uploaded: Identical».
+Скриншот карточки: artifact-checksums.png
